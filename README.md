@@ -10,7 +10,7 @@ O trabalho cobriu o ciclo completo de desenvolvimento: levantamento de requisito
 
 O projeto foi desenvolvido por cinco integrantes, organizado em quatro sprints: levantamento de requisitos, análise do sistema, modelagem e desenvolvimento com validação. Thais Carvalho atuou como Product Owner e Vicente Cordeiro como Scrum Master. Os requisitos foram levantados com brainstorming e entrevistas informais e documentados em histórias de usuário e casos de uso.
 
-A modelagem (casos de uso, classes, pacotes, atividades e sequência) e o detalhamento das sprints estão na [apresentação do projeto](docs/apresentacao-rompa.pdf).
+A modelagem (casos de uso, classes, pacotes, atividades e sequência) e o detalhamento das sprints estão na [apresentação do projeto](docs/ROMPA.pdf).
 
 ## Funcionalidades do Sistema
 
