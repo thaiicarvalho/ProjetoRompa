@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Violência — ROMPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tipos-violencia.css') }}">
+</head>
+
+<body>
+    <header class="page-strip">
+        <div class="page-strip__inner">
+            <a href="{{ url_for('main.index') }}" class="back-link" style="margin-bottom:0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12" />
+                    <polyline points="12 19 5 12 12 5" />
+                </svg>
+                Voltar
+            </a>
+            <div class="page-strip__divider"></div>
+            <span class="page-strip__label">Tipos de Violência</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="tv-hero">
+            <div class="container">
+                <p class="tv-hero__eyebrow">Lei Maria da Penha define</p>
+                <h1 class="tv-hero__title">
+                    Conheça para<br>
+                    <span class="tv-hero__accent1">reconhecer.</span><br>
+                    Reconheça para<br>
+                    <span class="tv-hero__accent2">agir.</span>
+                </h1>
+                <p class="tv-hero__sub">
+                    A violência tem muitas faces. Algumas são visíveis.
+                    A maioria, não. Ignorar qualquer uma delas é cumplicidade.
+                </p>
+            </div>
+        </section>
+
+        <!-- CARDS GRID -->
+        <section class="tv-section">
+            <div class="container">
+                <div class="tv-grid">
+
+                    <!-- Física -->
+                    <a href="{{ url_for('main.violencia_fisica') }}" class="tv-card" style="--accent:#ef4444;">
+                        <div class="tv-card__watermark">01</div>
+                        <div class="tv-card__icon-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ef4444;">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                        </div>
+                        <div class="tv-card__stat" style="color:#ef4444;">1 em 3</div>
+                        <div class="tv-card__stat-label">mulheres já sofreu violência física no Brasil</div>
+                        <h3 class="tv-card__title">Violência Física</h3>
+                        <p class="tv-card__tagline">O corpo pode ser curado. A memória que sobreviveu, nem sempre.</p>
+                        <span class="tv-card__cta" style="color:#ef4444;">Explorar →</span>
+                        <div class="tv-card__line" style="background:#ef4444;"></div>
+                    </a>
+
+                    <!-- Psicológica -->
+                    <a href="{{ url_for('main.violencia_psicologica') }}" class="tv-card" style="--accent:#a855f7;">
+                        <div class="tv-card__watermark" style="color:#a855f7;">02</div>
+                        <div class="tv-card__icon-box" style="background:rgba(168,85,247,.13);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#a855f7;">
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="17" x2="12.01" y2="17" />
+                            </svg>
+                        </div>
+                        <div class="tv-card__stat" style="color:#a855f7;">72%</div>
+                        <div class="tv-card__stat-label">das vítimas sofreram isso antes da violência física</div>
+                        <h3 class="tv-card__title">Violência Psicológica</h3>
+                        <p class="tv-card__tagline">Não deixa marca visível. É exatamente por isso que é mais perigosa.
+                        </p>
+                        <span class="tv-card__cta" style="color:#a855f7;">Explorar →</span>
+                        <div class="tv-card__line" style="background:#a855f7;"></div>
+                    </a>
+
+                    <!-- Sexual -->
+                    <a href="{{ url_for('main.violencia_sexual') }}" class="tv-card" style="--accent:#f97316;">
+                        <div class="tv-card__watermark" style="color:#f97316;">03</div>
+                        <div class="tv-card__icon-box" style="background:rgba(249,115,22,.13);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#f97316;">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                            </svg>
+                        </div>
+                        <div class="tv-card__stat" style="color:#f97316;">1 estupro</div>
+                        <div class="tv-card__stat-label">a cada 8 minutos no Brasil — 85% não denunciados</div>
+                        <h3 class="tv-card__title">Violência Sexual</h3>
+                        <p class="tv-card__tagline">Casamento não é consentimento. Relacionamento, menos ainda.</p>
+                        <span class="tv-card__cta" style="color:#f97316;">Explorar →</span>
+                        <div class="tv-card__line" style="background:#f97316;"></div>
+                    </a>
+
+                    <!-- Patrimonial -->
+                    <a href="{{ url_for('main.violencia_patrimonial') }}" class="tv-card" style="--accent:#eab308;">
+                        <div class="tv-card__watermark" style="color:#eab308;">04</div>
+                        <div class="tv-card__icon-box" style="background:rgba(234,179,8,.13);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#eab308;">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                                <line x1="1" y1="10" x2="23" y2="10" />
+                            </svg>
+                        </div>
+                        <div class="tv-card__stat" style="color:#eab308;">78%</div>
+                        <div class="tv-card__stat-label">dos casos de violência doméstica incluem controle financeiro
+                        </div>
+                        <h3 class="tv-card__title">Violência Patrimonial</h3>
+                        <p class="tv-card__tagline">Ela quer sair. Mas a conta bancária não é dela. Esse foi o plano.
+                        </p>
+                        <span class="tv-card__cta" style="color:#eab308;">Explorar →</span>
+                        <div class="tv-card__line" style="background:#eab308;"></div>
+                    </a>
+
+                    <!-- Moral -->
+                    <a href="{{ url_for('main.violencia_moral') }}" class="tv-card" style="--accent:#ec4899;">
+                        <div class="tv-card__watermark" style="color:#ec4899;">05</div>
+                        <div class="tv-card__icon-box" style="background:rgba(236,72,153,.13);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#ec4899;">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                            </svg>
+                        </div>
+                        <div class="tv-card__stat" style="color:#ec4899;">3x mais</div>
+                        <div class="tv-card__stat-label">mulheres sofrem danos à reputação por parceiros que o contrário
+                        </div>
+                        <h3 class="tv-card__title">Violência Moral</h3>
+                        <p class="tv-card__tagline">Palavras que constroem prisões. Sem grades. Sem chaves.</p>
+                        <span class="tv-card__cta" style="color:#ec4899;">Explorar →</span>
+                        <div class="tv-card__line" style="background:#ec4899;"></div>
+                    </a>
+
+                    <!-- Digital -->
+                    <a href="{{ url_for('main.violencia_digital') }}" class="tv-card" style="--accent:#38bdf8;">
+                        <div class="tv-card__watermark" style="color:#38bdf8;">06</div>
+                        <div class="tv-card__icon-box" style="background:rgba(56,189,248,.13);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#38bdf8;">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                                <line x1="12" y1="18" x2="12.01" y2="18" />
+                            </svg>
+                        </div>
+                        <div class="tv-card__stat" style="color:#38bdf8;">1 em 2</div>
+                        <div class="tv-card__stat-label">mulheres jovens já sofreu violência online no Brasil</div>
+                        <h3 class="tv-card__title">Violência Digital</h3>
+                        <p class="tv-card__tagline">A internet não esquece. Ele contava com isso.</p>
+                        <span class="tv-card__cta" style="color:#38bdf8;">Explorar →</span>
+                        <div class="tv-card__line" style="background:#38bdf8;"></div>
+                    </a>
+
+                    <!-- Quiz Card -->
+                    <a href="{{ url_for('main.quiz') }}" class="tv-card tv-card--quiz">
+                        <div class="tv-card__watermark tv-card__watermark--white">?</div>
+                        <div class="tv-card__icon-box tv-card__icon-box--white">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                <line x1="12" y1="17" x2="12.01" y2="17" />
+                            </svg>
+                        </div>
+                        <div class="tv-card__stat tv-card__stat--white">8</div>
+                        <div class="tv-card__stat-label tv-card__stat-label--white">situações reais para identificar
+                        </div>
+                        <h3 class="tv-card__title tv-card__title--white">Quiz: Você Reconhece?</h3>
+                        <p class="tv-card__tagline tv-card__tagline--white">Dada uma situação, qual tipo de violência é
+                            essa? Mais difícil do que parece.</p>
+                        <span class="tv-card__cta tv-card__cta--white">Testar meu conhecimento →</span>
+                        <div class="tv-card__line tv-card__line--white"></div>
+                    </a>
+
+                </div>
+
+                <!-- Emergency strip -->
+                <div class="tv-emergency">
+                    <div>
+                        <p class="tv-emergency__title">Você conhece alguém em situação de violência?</p>
+                        <p class="tv-emergency__sub">Ligue agora. O anonimato é garantido.</p>
+                    </div>
+                    <a href="tel:180" class="btn btn--primary">Central 180</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <div>
+                <div class="footer__logo">ROMPA</div>
+                <p class="footer__tagline">Rompendo o silêncio masculino sobre violência contra mulheres.</p>
+            </div>
+            <div>
+                <h4 class="footer__heading">Central de Ajuda</h4>
+                <ul class="footer__list">
+                    <li>Ligue 180 — gratuito e anônimo</li>
+                    <li>Disponível 24 horas</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer__heading">Precisa de Ajuda?</h4>
+                <p class="footer__cta-text">Se você conhece alguém em situação de violência, busque ajuda.</p><a
+                    href="tel:180" class="footer__tel">Ligar 180</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>© 2026 ROMPA. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

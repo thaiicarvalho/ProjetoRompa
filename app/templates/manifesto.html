@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manifesto ROMPA</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/manifesto.css') }}">
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="navbar__inner">
+
+      <a href="{{ url_for('main.index') }}" class="navbar__logo">
+        ROMPA
+      </a>
+
+      <button class="navbar__toggle" id="nav-toggle" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="navbar__nav" id="nav-menu">
+
+        <a href="#sobre" class="navbar__link">Sobre</a>
+        <a href="#recursos" class="navbar__link">Recursos</a>
+        <a href="#contato" class="navbar__link">Contato</a>
+
+        {% if usuario_logado %}
+
+        <div class="navbar__user">
+
+          <span>
+            Olá, {{ usuario_logado.split(' ')[0] }}
+          </span>
+
+          <a href="{{ url_for('auth.logout') }}" class="navbar__link">
+
+            Sair
+
+          </a>
+
+        </div>
+
+        {% else %}
+
+        <a href="{{ url_for('auth.login') }}" class="navbar__btn">
+
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+            <polyline points="10 17 15 12 10 7" />
+            <line x1="15" y1="12" x2="3" y2="12" />
+
+          </svg>
+
+          Entrar
+
+        </a>
+
+        {% endif %}
+
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="manifesto-page">
+    <div class="container" style="max-width:900px;">
+      <a href="{{ url_for('main.index') }}" class="back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12" />
+          <polyline points="12 19 5 12 12 5" />
+        </svg>
+        Voltar
+      </a>
+
+      <div class="card card--shadow card--padded-lg">
+        <div class="manifesto-hero text-center">
+          <h1 class="manifesto-hero__title">Manifesto ROMPA</h1>
+          <p class="manifesto-hero__sub">Compromisso de não se calar diante da violência contra mulheres</p>
+        </div>
+
+        <div class="manifesto-text-box">
+          <h2 class="manifesto-text-box__title">Eu Rompi o Silêncio</h2>
+          <p class="manifesto-lead">Ao assinar este manifesto, eu me comprometo a:</p>
+
+          <ol class="manifesto-list">
+            <li>
+              <span class="manifesto-list__num">1.</span>
+              <span><strong>Não ser omisso:</strong> Não permanecer em silêncio diante de comportamentos machistas,
+                piadas ofensivas ou situações de assédio e violência.</span>
+            </li>
+            <li>
+              <span class="manifesto-list__num">2.</span>
+              <span><strong>Educar-me constantemente:</strong> Buscar compreender a cultura do estupro, os diferentes
+                tipos de violência e como combatê-los.</span>
+            </li>
+            <li>
+              <span class="manifesto-list__num">3.</span>
+              <span><strong>Questionar e desconstruir:</strong> Refletir sobre meus próprios comportamentos e
+                privilégios, questionando atitudes machistas que foram normalizadas.</span>
+            </li>
+            <li>
+              <span class="manifesto-list__num">4.</span>
+              <span><strong>Ser aliado ativo:</strong> Apoiar vítimas, intervir em situações de risco e criar espaços
+                seguros para mulheres.</span>
+            </li>
+            <li>
+              <span class="manifesto-list__num">5.</span>
+              <span><strong>Influenciar positivamente:</strong> Conversar com outros homens, educar amigos e familiares,
+                e promover mudança de cultura no meu entorno.</span>
+            </li>
+          </ol>
+
+          <p class="manifesto-italic">
+            Reconheço que o silêncio diante da violência é cumplicidade.
+            Comprometo-me a ser parte ativa da solução, não do problema.
+          </p>
+        </div>
+
+        <div class="manifesto-counter" id="manifesto-counter">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="color:var(--red-900)">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          <p>
+            <span class="manifesto-counter__num" id="sig-count">
+              {{ total_assinaturas or 0 }}
+            </span>
+            homens já se comprometeram a não se calar hoje.
+          </p>
+        </div>
+
+        {% if ja_assinou %}
+
+        <div class="text-center">
+
+          <div class="manifesto-signed-box">
+
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" style="color:var(--green-600);margin:0 auto 1rem;">
+
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+
+            </svg>
+
+            <p class="manifesto-signed-box__title">
+              Você já assinou este manifesto
+            </p>
+
+            <p class="manifesto-signed-box__sub">
+              Obrigado por fazer parte deste movimento!
+            </p>
+
+          </div>
+
+          <a href="{{ url_for('main.index') }}" class="btn btn--outline">
+
+            Voltar à Página Inicial
+
+          </a>
+
+        </div>
+
+        {% else %}
+
+        <div class="text-center">
+
+          <p class="manifesto-sign-note">
+
+            Ao clicar no botão abaixo, você estará assinando digitalmente este manifesto
+            e se comprometendo a romper o silêncio.
+
+          </p>
+
+          <form action="{{ url_for('manifesto.assinar_manifesto') }}" method="POST">
+
+            <button type="submit" class="btn btn--primary btn--xl">
+
+              EU ROMPI O SILÊNCIO
+
+            </button>
+
+          </form>
+
+        </div>
+
+        {% endif %}
+      </div>
+    </div>
+  </main>
+
+  <script>
+
+    document.getElementById('nav-toggle')
+      .addEventListener('click', function () {
+
+        document.getElementById('nav-menu')
+          .classList.toggle('is-open');
+
+      });
+
+  </script>
+</body>
+
+</html>

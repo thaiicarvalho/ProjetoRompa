@@ -1,0 +1,36 @@
+/* css/simulador.css */
+.sim-page { min-height: calc(100vh - 56px); background: linear-gradient(135deg, var(--neutral-50), var(--neutral-100)); padding: 2.5rem 1.5rem; }
+
+.sim-body { padding: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.sim-badge {
+  display: inline-block;
+  padding: .5rem 1rem;
+  background: var(--red-100);
+  color: var(--red-900);
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  font-size: .9rem;
+  align-self: flex-start;
+}
+.sim-context  { font-size: 1.05rem; color: var(--neutral-700); line-height: 1.65; }
+.sim-question { font-size: 1.2rem; font-weight: 700; color: var(--neutral-900); }
+.sim-options  { display: flex; flex-direction: column; gap: .875rem; }
+.sim-option {
+  width: 100%;
+  text-align: left;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--neutral-200);
+  background: var(--neutral-50);
+  color: var(--neutral-800);
+  font-size: .95rem;
+  line-height: 1.55;
+  transition: border-color .2s, background .2s;
+  cursor: pointer;
+}
+.sim-option:hover    { border-color: var(--red-900); background: var(--red-50); }
+.sim-option.is-selected { border-color: var(--red-900); background: var(--red-50); box-shadow: var(--shadow-md); }
+
+.sim-counter { font-size: .8rem; color: var(--neutral-500); font-family: var(--font-mono); }
+
+@media (max-width: 600px) { .sim-body { padding: 1.5rem; } }

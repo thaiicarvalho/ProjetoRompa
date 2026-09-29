@@ -1,0 +1,67 @@
+/* css/cadastro-aviso.css */
+.aviso-page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: flex-start;
+  padding: 3rem 1rem;
+  background: var(--neutral-50);
+}
+.aviso-page .container { width: 100%; }
+
+.aviso-card__header {
+  background: linear-gradient(to right, var(--red-900), var(--red-800));
+  padding: 1.75rem 2rem;
+  border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+}
+.aviso-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: rgba(255,255,255,.75);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: .75rem;
+}
+.aviso-card__title {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+}
+
+.aviso-card__body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.aviso-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.aviso-item__icon {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--red-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--red-900);
+}
+.aviso-item__title { font-weight: 700; color: var(--neutral-900); margin-bottom: .375rem; font-size: 1rem; }
+.aviso-item__text  { font-size: .9rem; color: var(--neutral-600); line-height: 1.65; }
+
+.aviso-switch {
+  text-align: center;
+  font-size: .875rem;
+  color: var(--neutral-500);
+  margin-top: -.5rem;
+}
+.aviso-switch__link { color: var(--red-900); font-weight: 600; }
+.aviso-switch__link:hover { text-decoration: underline; }

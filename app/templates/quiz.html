@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Você Reconhece? — ROMPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+</head>
+
+<body>
+    <header class="page-strip">
+        <div class="page-strip__inner">
+            <a href="{{ url_for('main.tipos_violencia') }}" class="back-link" style="margin-bottom:0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12" />
+                    <polyline points="12 19 5 12 12 5" />
+                </svg>
+                Tipos de Violência
+            </a>
+            <div class="page-strip__divider"></div>
+            <span class="page-strip__label">Quiz</span>
+            <span class="quiz-counter" id="quiz-counter"
+                style="margin-left:auto;font-family:var(--font-mono);font-size:.75rem;color:var(--neutral-500);"></span>
+        </div>
+        <div class="page-strip__progress">
+            <div class="page-strip__progress-bar" id="quiz-progress" style="width:0%"></div>
+        </div>
+    </header>
+
+    <main class="quiz-page">
+        <div class="container" style="max-width:760px;">
+            <div id="quiz-body">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        var questions = JSON.parse(
+            '{{ perguntas | tojson | safe }}'
+        );
+
+        console.log(questions);
+
+        console.log(questions);
+        var current = 0;
+        var score = 0;
+        var answered = false;
+
+        function renderQuestion() {
+            var q = questions[current];
+            var pct = Math.round((current / questions.length) * 100);
+            document.getElementById('quiz-progress').style.width = pct + '%';
+            document.getElementById('quiz-counter').textContent = (current + 1) + '/' + questions.length;
+            answered = false;
+
+            var html =
+                '<div class="quiz-body">' +
+                '<p class="quiz-eyebrow">Situação ' + (current + 1) + '</p>' +
+                '<div class="quiz-scenario"><p>' + q.scenario + '</p></div>' +
+                '<p class="quiz-instruction">Qual tipo de violência é essa?</p>' +
+                '<div class="quiz-options" id="quiz-options">' +
+                q.options.map(function (opt) {
+                    return '<button class="quiz-option" data-id="' + opt.id + '">' + opt.label + '</button>';
+                }).join('') +
+                '</div>' +
+                '<div id="quiz-feedback" class="quiz-feedback" style="display:none;"></div>' +
+                '<div style="display:flex;justify-content:flex-end;">' +
+                '<button id="quiz-next" class="btn btn--primary" style="display:none;">' +
+                (current + 1 >= questions.length ? 'Ver resultado →' : 'Próxima situação →') +
+                '</button>' +
+                '</div>' +
+                '<p class="quiz-hint" id="quiz-hint">Selecione uma opção acima para continuar</p>' +
+                '</div>';
+
+            document.getElementById('quiz-body').innerHTML = html;
+
+            document.querySelectorAll('.quiz-option').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    if (answered) return;
+                    answered = true;
+                    var chosen = this.getAttribute('data-id');
+                    var correct = chosen === q.correctAnswer;
+                    if (correct) score++;
+
+                    document.querySelectorAll('.quiz-option').forEach(function (b) {
+                        var id = b.getAttribute('data-id');
+                        if (id === q.correctAnswer) { b.classList.add('is-correct'); }
+                        else if (id === chosen && !correct) { b.classList.add('is-wrong'); }
+                        else { b.classList.add('is-dim'); }
+                        b.disabled = true;
+                    });
+
+                    var fb = document.getElementById('quiz-feedback');
+                    fb.style.display = 'flex';
+                    fb.className = 'quiz-feedback ' + (correct ? 'quiz-feedback--correct' : 'quiz-feedback--wrong');
+                    fb.innerHTML =
+                        (correct
+                            ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;color:#059669;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'
+                            : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;color:#dc2626;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'
+                        ) +
+                        '<div><p class="quiz-feedback__title">' +
+                        (correct
+                            ? 'Correto — Violência ' + q.correctLabel
+                            : 'Errou — A resposta correta é  Violência  ' + q.correctLabel) +
+                        '</p><p class="quiz-feedback__text">' + q.explanation + '</p></div>';
+
+                    document.getElementById('quiz-hint').style.display = 'none';
+                    document.getElementById('quiz-next').style.display = 'inline-flex';
+                });
+            });
+
+            document.getElementById('quiz-next').addEventListener('click', function () {
+                if (current + 1 >= questions.length) {
+
+                    fetch("/quiz/resultado", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            acertos: score
+                        })
+                    })
+                        .then(response => response.text())
+                        .then(html => {
+                            document.open();
+                            document.write(html);
+                            document.close();
+                        });
+
+                } else {
+
+                    current++;
+                    renderQuestion();
+
+                }
+            });
+        }
+
+        renderQuestion();
+    </script>
+</body>
+
+</html>

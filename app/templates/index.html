@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROMPA — Rompa o Silêncio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="navbar__inner">
+
+            <a href="{{ url_for('main.index') }}" class="navbar__logo">
+                ROMPA
+            </a>
+
+            <button class="navbar__toggle" id="nav-toggle" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="navbar__nav" id="nav-menu">
+
+                <a href="#sobre" class="navbar__link">Sobre</a>
+                <a href="#recursos" class="navbar__link">Recursos</a>
+                <a href="#contato" class="navbar__link">Contato</a>
+
+                {% if usuario_logado %}
+
+                <div class="navbar__user">
+
+                    <span>
+                        Olá, {{ usuario_logado.split(' ')[0] }}
+                    </span>
+
+                    <a href="{{ url_for('auth.logout') }}" class="navbar__link">
+
+                        Sair
+
+                    </a>
+
+                </div>
+
+                {% else %}
+
+                <a href="{{ url_for('auth.login') }}" class="navbar__btn">
+
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                        <polyline points="10 17 15 12 10 7" />
+                        <line x1="15" y1="12" x2="3" y2="12" />
+
+                    </svg>
+
+                    Entrar
+
+                </a>
+
+                {% endif %}
+
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="hero__decor hero__decor--tr"></div>
+            <div class="hero__decor hero__decor--bl"></div>
+            <div class="container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Rompa o Silêncio</h1>
+                    <p class="hero__subtitle">
+                        O silêncio diante da violência contra a mulher é cumplicidade.
+                        É hora de os homens assumirem seu papel na construção de uma sociedade mais justa e segura.
+                    </p>
+
+                    <div class="hero__counter">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hero__counter-icon">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                        <div>
+                            <div class="hero__counter-number" id="sig-count">
+                                {{ total_assinaturas or 0 }}
+                            </div>
+                            <p class="hero__counter-label">homens já se comprometeram a não se calar hoje</p>
+                        </div>
+                    </div>
+
+                    <div class="hero__actions">
+                        <a href="#recursos" class="btn btn--primary btn--lg">Comece Agora</a>
+                        <a href="#sobre" class="btn btn--outline btn--lg">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-num">73%</div>
+                        <p class="stat-label">das mulheres já sofreram assédio no Brasil</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">1 a cada 4</div>
+                        <p class="stat-label">mulheres sofreu violência física ou sexual</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">85%</div>
+                        <p class="stat-label">dos casos não são denunciados</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section id="recursos" class="features-section">
+            <div class="container">
+                <div class="features-header">
+                    <h2 class="features-title">Recursos para Conscientização</h2>
+                    <p class="features-sub">
+                        Explore nossos recursos educacionais e ferramentas interativas para entender melhor
+                        e combater a cultura do estupro e a violência contra mulheres.
+                    </p>
+                </div>
+
+                <div class="features-grid">
+
+                    <a href="{{ url_for('main.tipos_violencia') }}" class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="8" x2="12" y2="12" />
+                                <line x1="12" y1="16" x2="12.01" y2="16" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Tipos de Violência</h3>
+                        <p class="feature-card__desc">Conheça e identifique os diferentes tipos de violência contra a
+                            mulher</p>
+                        <span class="feature-card__cta">Acessar <span class="feature-card__arrow">→</span></span>
+                    </a>
+
+                    <a href="{{ url_for('main.recursos_reflexao') }}" class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Recursos para Reflexão</h3>
+                        <p class="feature-card__desc">Conheça temas relacionados à prevenção da violência contra a
+                            mulher e descubra novos caminhos para continuar sua reflexão e aprendizado</p>
+                        <span class="feature-card__cta">Acessar <span class="feature-card__arrow">→</span></span>
+                    </a>
+
+                    <a href="{{ url_for('main.simulador') }}" class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="5 3 19 12 5 21 5 3" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Simulador</h3>
+                        <p class="feature-card__desc">Simule situações e entenda as perspectivas das vítimas</p>
+                        <span class="feature-card__cta">Acessar <span class="feature-card__arrow">→</span></span>
+                    </a>
+
+                    <a href="{{ url_for('main.consequencias') }}" class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Consequências do Silêncio</h3>
+                        <p class="feature-card__desc">Entenda o impacto de se manter em silêncio diante da violência</p>
+                        <span class="feature-card__cta">Acessar <span class="feature-card__arrow">→</span></span>
+                    </a>
+
+                </div>
+
+                <!-- MANIFESTO CTA -->
+                <div class="manifesto-cta">
+                    <h3 class="manifesto-cta__title">Assine o Manifesto caso se comprometa a não se calar à causa</h3>
+                    <p class="manifesto-cta__text">
+                        Faça parte do movimento de homens que escolheram romper o silêncio e combater
+                        ativamente a violência contra mulheres.
+                    </p>
+                    <a href="{{ url_for('manifesto.manifesto') }}" class="btn btn--primary btn--xl" id="manifesto-btn">
+
+                        EU ROMPI O SILÊNCIO
+
+                    </a>
+                    {% if usuario_logado %}
+
+                    <p class="manifesto-cta__note">
+
+                        Você já pode acessar o manifesto e registrar seu compromisso.
+
+                    </p>
+
+                    {% else %}
+
+                    <p class="manifesto-cta__note">
+
+                        É necessário fazer login ou criar uma conta para assinar.
+
+                    </p>
+
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="sobre" class="about-section">
+            <div class="container container--md">
+                <h2 class="about-title text-center">Por que os Homens Devem Romper o Silêncio?</h2>
+                <p class="about-text text-center">
+                    A cultura do estupro e a violência contra mulheres persistem porque muitos homens
+                    permanecem em silêncio. Romper esse silêncio não é apenas necessário — é urgente.
+                    Cada voz masculina que se levanta contra a violência ajuda a criar um ambiente
+                    mais seguro para todas as mulheres.
+                </p>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h3 class="about-card__title">Educação e Prevenção</h3>
+                        <p class="about-card__text">
+                            Compreender os diferentes tipos de violência e como preveni-los é o primeiro passo para a
+                            mudança.
+                        </p>
+                    </div>
+                    <div class="about-card">
+                        <h3 class="about-card__title">Responsabilidade Coletiva</h3>
+                        <p class="about-card__text">
+                            Todos nós temos papel na construção de uma sociedade que não tolera a violência contra
+                            mulheres.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer" id="contato">
+        <div class="footer__inner">
+            <div>
+                <div class="footer__logo">ROMPA</div>
+                <p class="footer__tagline">Rompendo o silêncio masculino sobre violência contra mulheres.</p>
+            </div>
+            <div>
+                <h4 class="footer__heading">Recursos Importantes</h4>
+                <ul class="footer__list">
+                    <li>Central de Atendimento: 180</li>
+                    <li>Delegacias Especializadas</li>
+                    <li>Casas de Acolhimento</li>
+                    <li>Apoio Psicológico</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer__heading">Precisa de Ajuda?</h4>
+                <p class="footer__cta-text">Se você ou alguém que conhece está em situação de violência, busque ajuda
+                    imediatamente.</p>
+                <a href="tel:180" class="footer__tel">Ligar 180</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>© 2026 ROMPA. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+
+        // Mobile nav
+        document.getElementById('nav-toggle')
+            .addEventListener('click', function () {
+
+                document.getElementById('nav-menu')
+                    .classList.toggle('is-open');
+            });
+
+        // Dropdown do usuário
+        const userBtn = document.getElementById('user-menu-btn');
+
+        if (userBtn) {
+
+            userBtn.addEventListener('click', function () {
+
+                document.getElementById('user-dropdown')
+                    .classList.toggle('show');
+            });
+
+            window.addEventListener('click', function (e) {
+
+                if (!e.target.closest('.navbar__dropdown')) {
+
+                    document.getElementById('user-dropdown')
+                        .classList.remove('show');
+                }
+            });
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+/* css/manifesto-sucesso.css */
+.sucesso-page {
+  min-height: calc(100vh - 64px);
+  background: #fff;
+  padding: 3rem 1.5rem;
+}
+.sucesso-icon {
+  width: 6rem;
+  height: 6rem;
+  background: var(--green-100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.75rem;
+  color: var(--green-600);
+}
+.sucesso-title  { font-size: 2rem; font-weight: 700; color: var(--neutral-900); margin-bottom: 1rem; }
+.sucesso-text   { font-size: 1.1rem; color: var(--neutral-600); margin-bottom: 2rem; line-height: 1.65; max-width: 36rem; margin-left: auto; margin-right: auto; }
+.sucesso-count  { color: var(--red-900); font-size: 1.2rem; }
+
+.sucesso-next {
+  background: var(--red-50);
+  border: 2px solid var(--red-200);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sucesso-next__title { font-size: 1.05rem; font-weight: 700; color: var(--neutral-900); margin-bottom: 1rem; }
+.sucesso-next__list  { display: flex; flex-direction: column; gap: .75rem; }
+.sucesso-next__list li { display: flex; gap: .75rem; align-items: flex-start; color: var(--neutral-700); font-size: .9rem; line-height: 1.5; }
+.sucesso-next__dot   { color: var(--red-900); font-weight: 700; flex-shrink: 0; }

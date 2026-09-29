@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta — ROMPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="navbar__inner">
+            <a href="{{ url_for('main.index') }}" class="navbar__logo">ROMPA</a>
+            <button class="navbar__toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="navbar__nav" id="nav-menu">
+                <a href="{{ url_for('main.index') }}#sobre" class="navbar__link">Sobre</a>
+                <a href="{{ url_for('main.index') }}#recursos" class="navbar__link">Recursos</a>
+                <a href="{{ url_for('auth.login') }}" class="navbar__btn">Entrar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="cadastro-page">
+        <div class="container container--sm">
+            <a href="{{ url_for('auth.cadastro_aviso') }}" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12" />
+                    <polyline points="12 19 5 12 12 5" />
+                </svg>
+                Voltar
+            </a>
+
+            <div class="card card--shadow">
+                <div class="cadastro-card__header">
+                    <h2 class="cadastro-card__title">Crie sua conta</h2>
+                    <p class="cadastro-card__sub">Faça parte do movimento ROMPA</p>
+                </div>
+
+                <div class="cadastro-card__body">
+                    <form method="POST" action="{{ url_for('auth.cadastro') }}" class="cadastro-form">
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="reg-first" class="form-label">Nome</label>
+                                <div class="form-input-wrap">
+                                    <span class="form-input-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                            <circle cx="12" cy="7" r="4" />
+                                        </svg>
+                                    </span>
+                                    <input type="text" id="reg-first" name="firstName"
+                                        class="form-input form-input--icon-left" placeholder="João" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-last" class="form-label">Sobrenome</label>
+                                <input type="text" id="reg-last" name="lastName" class="form-input" placeholder="Silva"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reg-username" class="form-label">Nome de usuário</label>
+                            <div class="form-input-wrap">
+                                <span class="form-input-icon" style="font-size:.85rem;font-weight:600;">@</span>
+                                <input type="text" id="reg-username" name="username"
+                                    class="form-input form-input--icon-left" placeholder="seu_usuario" required
+                                    minlength="3">
+                            </div>
+                            <p class="form-help">Sem espaços. Mínimo 3 caracteres.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reg-password" class="form-label">Senha</label>
+                            <div class="form-input-wrap">
+                                <span class="form-input-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                    </svg>
+                                </span>
+                                <input type="password" id="reg-password" name="password"
+                                    class="form-input form-input--icon-left" placeholder="Mínimo 6 caracteres" required
+                                    minlength="6">
+                            </div>
+                        </div>
+
+                        {% if erro %}
+                        <div id="reg-error" class="form-error">
+                            {{ erro }}
+                        </div>
+                        {% endif %}
+
+                        <button type="submit" id="reg-submit" class="btn btn--primary btn--full">Criar conta</button>
+                    </form>
+
+                    <p class="cadastro-switch">
+                        Já tem conta?
+                        <a href="{{ url_for('auth.login') }}" class="cadastro-switch__link">Faça login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

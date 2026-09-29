@@ -1,0 +1,554 @@
+.page-container {
+    min-height: 100vh;
+    background-color: white;
+}
+
+.page-header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.header-content {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #525252;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.back-button:hover {
+    color: #171717;
+}
+
+.icon-arrow {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.back-button span {
+    font-size: 0.875rem;
+}
+
+.header-divider {
+    width: 1px;
+    height: 1.25rem;
+    background-color: #d4d4d4;
+}
+
+.header-title {
+    font-size: 0.875rem;
+    color: #525252;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.hero-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+}
+
+.hero-content {
+    max-width: 48rem;
+}
+
+.hero-label {
+    color: #dc2626;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 2rem;
+    color: #171717;
+}
+
+.hero-title-red {
+    color: #dc2626;
+}
+
+.hero-text {
+    color: #404040;
+    font-size: 1.25rem;
+    line-height: 1.75;
+}
+
+.hero-decoration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    opacity: 0.03;
+    font-size: 20rem;
+    font-weight: 900;
+    color: #dc2626;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.stats-section {
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #fef2f2;
+}
+
+.stats-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #dc2626;
+    margin-bottom: 0.5rem;
+}
+
+.stat-description {
+    color: #404040;
+    font-size: 0.875rem;
+}
+
+.stat-source {
+    margin-top: 1rem;
+    color: #737373;
+    font-size: 0.75rem;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+}
+
+.cascade-section {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+}
+
+.cascade-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.cascade-title {
+    font-size: 2.25rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    color: #171717;
+}
+
+.cascade-subtitle {
+    color: #525252;
+    font-size: 1.125rem;
+    max-width: 42rem;
+    margin: 0 auto;
+}
+
+.cascade-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.scenario-card {
+    position: relative;
+    background-color: white;
+    border: 2px solid #e5e5e5;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.scenario-card:hover {
+    border-color: #fca5a5;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.scenario-number {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #fee2e2;
+    border: 2px solid #fca5a5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #dc2626;
+    font-weight: 700;
+}
+
+.scenario-content {
+    padding: 1.5rem;
+    padding-left: 5rem;
+}
+
+.scenario-situation-block {
+    margin-bottom: 1rem;
+}
+
+.scenario-label {
+    font-size: 0.75rem;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #737373;
+    margin-bottom: 0.5rem;
+}
+
+.scenario-situation {
+    color: #171717;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.scenario-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+}
+
+
+.scenario-column-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.scenario-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #a3a3a3;
+}
+
+.scenario-warning {
+    width: 1rem;
+    height: 1rem;
+    color: #dc2626;
+}
+
+.scenario-column-label {
+    font-size: 0.75rem;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #737373;
+}
+
+.scenario-column-label-red {
+    color: #dc2626;
+}
+
+.scenario-column-text {
+    color: #525252;
+    font-size: 0.875rem;
+    line-height: 1.625;
+}
+
+.scenario-column-text-bold {
+    color: #171717;
+    font-weight: 500;
+}
+
+.scenario-arrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scenario-arrow {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #dc2626;
+}
+
+.scenario-impact {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: #fee2e2;
+    border: 2px solid #fca5a5;
+    border-radius: 0.5rem;
+    color: #b91c1c;
+    font-size: 0.75rem;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.scenario-hover-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 0;
+    background-color: #dc2626;
+    transition: width 0.7s;
+}
+
+.scenario-card:hover .scenario-hover-line {
+    width: 100%;
+}
+
+.math-section {
+    background-color: #fafafa;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.math-container {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+}
+
+.math-title {
+    font-size: 2.25rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #171717;
+}
+
+.math-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.math-card {
+    background-color: white;
+    border: 2px solid #d4d4d4;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.math-card-right {
+    border-color: #fca5a5;
+}
+
+.math-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.math-icon-neutral {
+    background-color: #e5e5e5;
+    color: #525252;
+}
+
+.math-icon-action {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.math-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #171717;
+    margin-bottom: 1rem;
+}
+
+.math-equals {
+    font-size: 3.75rem;
+    font-weight: 900;
+    color: #dc2626;
+    margin-bottom: 1rem;
+}
+
+.math-result {
+    color: #171717;
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+}
+
+.math-description {
+    color: #525252;
+    font-size: 0.875rem;
+    line-height: 1.625;
+}
+
+.cta-section {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+}
+
+.cta-card {
+    background: linear-gradient(to bottom right, #dc2626, #b91c1c);
+    border: 2px solid #b91c1c;
+    border-radius: 1rem;
+    padding: 3rem;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.cta-text {
+    color: #fef2f2;
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.cta-button-primary {
+    background-color: white;
+    color: #7f1d1d;
+}
+
+.cta-button-primary:hover {
+    background-color: #f5f5f5;
+}
+
+.cta-button-secondary {
+    background-color: #991b1b;
+    color: white;
+    border: 1px solid #b91c1c;
+}
+
+.cta-button-secondary:hover {
+    background-color: #b91c1c;
+}
+
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 3.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-decoration {
+        font-size: 12rem;
+    }
+
+    .cascade-title {
+        font-size: 1.875rem;
+    }
+
+    .math-title {
+        font-size: 1.875rem;
+    }
+
+    .cta-title {
+        font-size: 1.875rem;
+    }
+
+    .scenario-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .scenario-arrow-container {
+        display: none;
+    }
+
+    .math-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .cta-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-container {
+        padding: 3rem 1rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .cascade-section {
+        padding: 3rem 1rem;
+    }
+
+    .scenario-content {
+        padding-left: 1.5rem;
+    }
+
+    .scenario-number {
+        position: static;
+        margin-bottom: 1rem;
+    }
+}

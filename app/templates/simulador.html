@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador — ROMPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/simulador.css') }}">
+</head>
+
+<body>
+    <header class="page-strip">
+        <div class="page-strip__inner">
+            <a href="{{ url_for('main.index') }}" class="back-link" style="margin-bottom:0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12" />
+                    <polyline points="12 19 5 12 12 5" />
+                </svg>
+                Voltar
+            </a>
+            <div class="page-strip__divider"></div>
+            <span class="page-strip__label">Simulador</span>
+            <span class="sim-counter" id="sim-counter" style="margin-left:auto;"></span>
+        </div>
+        <div class="page-strip__progress">
+            <div class="page-strip__progress-bar" id="sim-progress" style="width:0%"></div>
+        </div>
+    </header>
+
+    <main class="sim-page">
+        <div class="container" style="max-width:760px;">
+            <div class="card card--shadow" id="sim-card">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        var scenarios =
+            {{ cenarios | tojson | safe }};
+
+        var current = 0;
+
+        var responses = [];
+
+        var selected = null;
+
+        function renderScenario() {
+
+            var s = scenarios[current];
+
+            var pct = Math.round(
+                (
+                    current / scenarios.length
+                ) * 100
+            );
+
+            document.getElementById(
+                'sim-progress'
+            ).style.width = pct + '%';
+
+            document.getElementById(
+                'sim-counter'
+            ).textContent =
+                'Cenário ' +
+                (current + 1) +
+                ' de ' +
+                scenarios.length;
+
+            var html = '';
+
+            html += '<div class="sim-body">';
+
+            html +=
+                '<div class="sim-badge">' +
+                s.titulo +
+                '</div>';
+
+            html +=
+                '<p class="sim-context">' +
+                s.contexto +
+                '</p>';
+
+            html +=
+                '<h3 class="sim-question">' +
+                'O que você faria nesta situação?' +
+                '</h3>';
+
+            html +=
+                '<div class="sim-options" id="sim-options">';
+
+            s.opcoes.forEach(function (
+                opt,
+                i
+            ) {
+
+                html +=
+                    '<button class="sim-option" data-index="' +
+                    i +
+                    '">' +
+                    opt.texto +
+                    '</button>';
+
+            });
+
+            html += '</div>';
+
+            html +=
+                '<button class="btn btn--primary btn--full" id="sim-next" disabled>' +
+
+                (
+                    current < scenarios.length - 1
+                        ? 'Próximo Cenário'
+                        : 'Ver Resultado'
+                ) +
+
+                '</button>';
+
+            html += '</div>';
+
+            document.getElementById(
+                'sim-card'
+            ).innerHTML = html;
+
+            document.querySelectorAll(
+                '.sim-option'
+            ).forEach(function (btn) {
+
+                btn.addEventListener(
+                    'click',
+                    function () {
+
+                        selected = parseInt(
+                            this.getAttribute(
+                                'data-index'
+                            )
+                        );
+
+                        document.querySelectorAll(
+                            '.sim-option'
+                        ).forEach(function (b) {
+
+                            b.classList.remove(
+                                'is-selected'
+                            );
+
+                        });
+
+                        this.classList.add(
+                            'is-selected'
+                        );
+
+                        document.getElementById(
+                            'sim-next'
+                        ).disabled = false;
+
+                    }
+                );
+
+            });
+
+            document.getElementById(
+                'sim-next'
+            ).addEventListener(
+                'click',
+                function () {
+
+                    if (selected === null) {
+
+                        return;
+
+                    }
+
+                    responses.push(
+                        scenarios[current]
+                            .opcoes[selected]
+                    );
+
+                    if (
+                        current <
+                        scenarios.length - 1
+                    ) {
+
+                        current++;
+
+                        selected = null;
+
+                        renderScenario();
+
+                    } else {
+
+                        var pontuacao = 0;
+
+                        responses.forEach(function (r) {
+
+                            pontuacao += r.peso;
+
+                        });
+
+                        var pontuacaoMaxima =
+                            scenarios.length * 10;
+
+                        var percentual =
+                            (
+                                pontuacao /
+                                pontuacaoMaxima
+                            ) * 100;
+
+                        fetch(
+                            "/simulador/resultado",
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+
+                                    pontuacao:
+                                        pontuacao,
+
+                                    pontuacao_maxima:
+                                        pontuacaoMaxima,
+
+                                    percentual:
+                                        percentual
+
+                                })
+                            }
+                        )
+                            .then(
+                                response =>
+                                    response.text()
+                            )
+                            .then(html => {
+
+                                document.open();
+
+                                document.write(
+                                    html
+                                );
+
+                                document.close();
+
+                            });
+
+                    }
+
+                }
+            );
+
+        }
+
+        renderScenario();
+
+    </script>
+</body>
+
+</html>

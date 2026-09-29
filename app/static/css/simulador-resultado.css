@@ -1,0 +1,100 @@
+/* css/simulador-resultado.css */
+.simres-page { min-height: calc(100vh - 56px); background: #fff; padding: 2.5rem 1.5rem; }
+
+.simres-icon {
+  width: 6rem; height: 6rem; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+  border: 4px solid;
+}
+.simres-icon--green { background: var(--green-50);  border-color: var(--green-200); color: var(--green-600); }
+.simres-icon--red   { background: var(--red-50);    border-color: var(--red-200);   color: var(--red-600);   }
+
+.simres-title         { font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.3; }
+.simres-title--green  { color: var(--green-600); }
+.simres-title--red    { color: var(--red-600); }
+.simres-text          { font-size: 1.05rem; color: var(--neutral-700); line-height: 1.65; margin-bottom: 1.5rem; max-width: 40rem; margin-left: auto; margin-right: auto; }
+
+.simres-impact-box {
+  background: var(--red-50); border: 2px solid var(--red-200);
+  border-radius: var(--radius-xl); padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem; max-width: 38rem; margin-left: auto; margin-right: auto;
+  font-size: 1rem; font-weight: 600; color: var(--neutral-900); line-height: 1.55;
+}
+
+.simres-share-box {
+  background: linear-gradient(135deg, var(--green-50), #dcfce7);
+  border: 2px solid var(--green-200);
+  border-radius: var(--radius-xl); padding: 2rem; margin-bottom: 2rem;
+}
+.simres-share-box__header { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; color: var(--green-700); }
+.simres-share-box__header h3 { font-size: 1.3rem; font-weight: 700; color: var(--green-900); }
+.simres-share-box p { color: var(--green-900); line-height: 1.6; font-size: .95rem; }
+
+.simres-groups-box {
+  background: var(--neutral-900); border-radius: var(--radius-xl);
+  padding: 2rem; margin-bottom: 2rem; color: #fff;
+}
+.simres-groups-box__header { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; }
+.simres-groups-box__header h3 { font-size: 1.3rem; font-weight: 700; }
+.simres-groups-box > p { color: var(--neutral-300); font-size: .9rem; line-height: 1.6; margin-bottom: 1.25rem; }
+.simres-groups-list { display: flex; flex-direction: column; gap: .875rem; }
+.simres-group-item { background: rgba(255,255,255,.08); border-radius: var(--radius-lg); padding: 1rem; }
+.simres-group-item h4 { font-weight: 700; margin-bottom: .25rem; font-size: .95rem; }
+.simres-group-item p  { font-size: .8rem; color: var(--neutral-300); margin-bottom: .375rem; }
+.simres-group-item a  { font-size: .8rem; color: var(--red-400); text-decoration: underline; }
+
+.simres-steps { border-top: 1px solid var(--neutral-200); padding-top: 2rem; margin-bottom: 2rem; }
+.simres-steps h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
+.simres-steps ul { display: flex; flex-direction: column; gap: .75rem; }
+.simres-steps li { display: flex; gap: .75rem; align-items: flex-start; font-size: .9rem; color: var(--neutral-700); line-height: 1.55; }
+.simres-steps__dot      { color: var(--red-900); font-weight: 700; flex-shrink: 0; }
+.simres-steps__dot--green { color: var(--green-600); }
+
+.simres-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.simres-actions .btn { flex: 1; min-width: 160px; }
+
+.simres-card--green {
+    border: 2px solid var(--green-600);
+}
+
+.simres-card--yellow {
+    border: 2px solid #eab308;
+}
+
+.simres-card--red {
+    border: 2px solid var(--red-600);
+}
+
+.simres-icon--yellow {
+    background: #fef9c3;
+    border-color: #fde68a;
+    color: #ca8a04;
+}
+
+.simres-title--yellow {
+    color: #ca8a04;
+}
+
+.simres-impact-box--green {
+    background: var(--green-50);
+    border-color: var(--green-200);
+    color: var(--green-900);
+}
+
+.simres-share-button {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.9rem 1rem;
+    border: none;
+    border-radius: var(--radius-lg);
+    background: var(--green-700);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .simres-actions { flex-direction: column; }
+  .simres-actions .btn { flex: unset; }
+}

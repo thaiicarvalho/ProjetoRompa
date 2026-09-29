@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do Simulador — ROMPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/simulador-resultado.css') }}">
+</head>
+
+<body>
+    <header class="page-strip">
+        <div class="page-strip__inner">
+            <a href="{{ url_for('main.index') }}" class="back-link" style="margin-bottom:0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12" />
+                    <polyline points="12 19 5 12 12 5" />
+                </svg>
+                Voltar
+            </a>
+            <div class="page-strip__divider"></div>
+            <span class="page-strip__label">Resultado do Simulador</span>
+        </div>
+    </header>
+
+    <main class="simres-page">
+        <div class="container" style="max-width:760px;">
+            <div class="card card--shadow card--padded-lg" id="result-card">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        var resultado =
+            {{ resultado | tojson | safe }};
+
+        var estatisticaPerfil = Number(
+            '{{ estatistica_omissao }}'
+        );
+
+        var card = document.getElementById('result-card');
+
+        var isAtivo = resultado.estado === "ATIVA";
+        var isReflexivo = resultado.estado === "REFLEXIVA";
+        var isOmisso = resultado.estado === "OMISSA";
+
+        var cardClass = isAtivo
+            ? "simres-card--green"
+            : isReflexivo
+                ? "simres-card--yellow"
+                : "simres-card--red";
+
+        var iconClass = isAtivo
+            ? "simres-icon--green"
+            : isReflexivo
+                ? "simres-icon--yellow"
+                : "simres-icon--red";
+
+        var titleClass = isAtivo
+            ? "simres-title--green"
+            : isReflexivo
+                ? "simres-title--yellow"
+                : "simres-title--red";
+
+        card.classList.add(cardClass);
+
+        var iconSvg = isAtivo
+            ? '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>'
+            : isReflexivo
+                ? '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>'
+                : '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
+
+        var extraContent = "";
+
+        if (isAtivo) {
+            extraContent =
+                '<div class="simres-share-box">' +
+                '<div class="simres-share-box__header">' +
+                '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+                '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>' +
+                '<line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>' +
+                '</svg>' +
+                '<h3>Use sua influência</h3>' +
+                '</div>' +
+                '<p>Você está no caminho certo! Agora, ajude outros homens a romperem o silêncio também. Compartilhe a plataforma ROMPA com seu círculo social e seja multiplicador dessa mudança.</p>' +
+                '<button class="simres-share-button" type="button">Compartilhar ROMPA</button>' +
+                '</div>' +
+
+                '<div class="simres-impact-box simres-impact-box--green">' +
+                '<p>' + estatisticaPerfil + '% dos usuários tiveram posturas semelhantes às suas.</p>' +
+                '</div>' +
+
+                '<div class="simres-steps">' +
+                '<h3>Continue sendo um agente de mudança:</h3>' +
+                '<ul>' +
+                '<li><span class="simres-steps__dot simres-steps__dot--green">•</span><span>Eduque outros homens sobre intervenção segura e efetiva</span></li>' +
+                '<li><span class="simres-steps__dot simres-steps__dot--green">•</span><span>Crie espaços de conversa sobre masculinidades no seu círculo</span></li>' +
+                '<li><span class="simres-steps__dot simres-steps__dot--green">•</span><span>Apoie iniciativas de combate à violência contra mulheres</span></li>' +
+                '<li><span class="simres-steps__dot simres-steps__dot--green">•</span><span>Continue se educando e desconstruindo padrões machistas</span></li>' +
+                '<li><span class="simres-steps__dot simres-steps__dot--green">•</span><span>Seja exemplo e incentive outros homens a romperem o silêncio</span></li>' +
+                '</ul>' +
+                '</div>';
+        } else {
+            extraContent =
+                '<div class="simres-impact-box">' +
+                '<p>' + estatisticaPerfil + '% dos usuários tiveram posturas semelhantes às suas.</p>' +
+                '</div>' +
+
+                '<div class="simres-steps">' +
+                '<h3>Primeiros passos para mudar:</h3>' +
+                '<ul>' +
+                '<li><span class="simres-steps__dot">1.</span><span>Reconhecer que o silêncio também é uma escolha que tem consequências</span></li>' +
+                '<li><span class="simres-steps__dot">2.</span><span>Educar-se sobre cultura do estupro, machismo e violência de gênero</span></li>' +
+                '<li><span class="simres-steps__dot">3.</span><span>Começar a questionar comportamentos no seu círculo social</span></li>' +
+                '<li><span class="simres-steps__dot">4.</span><span>Praticar intervenções seguras em situações do dia a dia</span></li>' +
+                '</ul>' +
+                '</div>';
+        }
+
+        card.innerHTML =
+            '<div class="text-center">' +
+            '<div class="simres-icon ' + iconClass + '">' +
+            iconSvg +
+            '</div>' +  
+            '<h2 class="simres-title ' + titleClass + '">' +
+            resultado.titulo +
+            '</h2>' +
+            '<p class="simres-text">' +
+            resultado.mensagem +
+            '</p>' +
+            '</div>' +
+
+            extraContent +
+
+            '<div class="simres-actions">' +
+            '<a href="{{ url_for("main.simulador") }}" class="btn btn--ghost">↺ Refazer Simulador</a>' +
+            '<a href="{{ url_for("main.index") }}" class="btn btn--primary">Explorar Outros Recursos</a>' +
+            '</div>';
+    </script>
+</body>
+
+</html>
