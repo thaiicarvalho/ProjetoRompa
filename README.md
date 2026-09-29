@@ -2,15 +2,15 @@
 
 ## Descrição do Projeto
 
-Este repositório contém a plataforma ROMPA, desenvolvida em grupo para a disciplina de **Engenharia de Software I**, com a metodologia **Scrum**. O sistema busca conscientizar homens sobre a violência contra as mulheres e sobre como a omissão contribui para sua perpetuação, por meio de conteúdo educativo, um quiz, um simulador de situações e um manifesto de compromisso.
+Este repositório contém a plataforma ROMPA, desenvolvida em grupo para a disciplina de Engenharia de Software I, com a metodologia Scrum. O sistema busca conscientizar homens sobre a violência contra as mulheres e sobre como a omissão contribui para sua perpetuação, por meio de conteúdo educativo, um quiz, um simulador de situações e um manifesto de compromisso.
 
 O trabalho cobriu o ciclo completo de desenvolvimento: levantamento de requisitos, análise, modelagem em UML, implementação e validação.
 
 ## Metodologia
 
-O projeto foi desenvolvido por cinco integrantes, organizado em quatro sprints: levantamento de requisitos, análise do sistema, modelagem e desenvolvimento com validação. Thais Carvalho atuou como Product Owner e Vicente Cordeiro como Scrum Master. Os requisitos foram levantados com brainstorming e entrevistas informais e documentados em histórias de usuário e casos de uso.
+O projeto foi desenvolvido por cinco integrantes, organizado em quatro sprints: levantamento de requisitos, análise do sistema, modelagem e desenvolvimento com validação. Os requisitos foram levantados com brainstorming e entrevistas informais e documentados em histórias de usuário e casos de uso.
 
-A modelagem (casos de uso, classes, pacotes, atividades e sequência) e o detalhamento das sprints estão na [apresentação do projeto](docs/ROMPA.pdf).
+A modelagem (casos de uso, classes, pacotes, atividades e sequência) estão na [documentação do projeto](docs/ROMPA.pdf).
 
 ## Funcionalidades do Sistema
 
